@@ -1,0 +1,439 @@
+<html>
+<body>
+
+<style>
+    $red: #fe344c;
+
+/*Mixins*/
+@mixin centerAlign{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+    background-color: $red;
+    font-weight: 100;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.invisible{
+  opacity: 0;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Satisfy);
+.heading{
+  color: white;
+  font-weight: 100;
+  font-size: 500%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  white-space: nowrap;
+  top: 80%;
+  transform: translateY(-80%);
+  font-family: 'Satisfy', cursive;
+}
+
+.question {
+  color: white;
+  font-weight: 100;
+  font-size: 150%;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  white-space: nowrap;
+  top: 80%;
+  transform: translateY(-80%);
+  font-family: 'Satisfy', cursive;
+  input {
+    height: 30px;
+  }
+  input[type='text'] {
+    font-family: 'Helvetica';
+    font-size: 70%;
+  }
+  input[type='button'] {
+    font-size: 80%;
+    color: #777;
+  }
+}
+
+.love-container{
+  opacity: 0;
+  visibility: hidden;
+}
+.love{
+  @extend .heading;
+}
+
+.heart-container, .question-container {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  #heart-svg{
+    margin-top: 50px;
+    height: 70%;
+    width: 20%;
+    cursor: pointer;
+    opacity: 0;
+    #heart{
+      fill: white;
+    }  
+  }
+}
+
+
+#little-heart1{
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 100%;
+  left: 5%;
+  transform: rotate(-5deg);
+  .heart{
+    fill: white;
+  }
+}
+
+#little-heart2{
+  @extend #little-heart1;
+  height: 50px;
+  width: 50px;
+  left: 17%;
+  transform: rotate(5deg);
+}
+#little-heart3{
+  @extend #little-heart1;
+  height: 75px;
+  width: 75px;
+  left: 20%;
+  transform: rotate(-7deg);
+}
+#little-heart4{
+  @extend #little-heart1;
+  height: 20px;
+  width: 20px;
+  left: 12%;
+  transform: rotate(2deg);
+}
+#little-heart5{
+  @extend #little-heart1;
+  height: 50px;
+  width: 50px;
+  left: 10%;
+}
+#little-heart6{
+  @extend #little-heart1;
+  height: 30px;
+  width: 30px;
+  left: 70%;
+  transform: rotate(-3deg);
+}
+#little-heart7{
+  @extend #little-heart1;
+  height: 20px;
+  width: 20px;
+  left: 85%;
+  transform: rotate(3deg);
+}
+#little-heart8{
+  @extend #little-heart1;
+  height: 80px;
+  width: 80px;
+  left: 75%;
+  transform: rotate(2deg);
+}
+#little-heart9{
+  @extend #little-heart1;
+  transform: rotate(3deg);
+  left: 85%;
+}
+#little-heart10{
+  @extend #little-heart1;
+  height: 50px;
+  width: 50px;
+  left: 95%;
+  transform: rotate(5deg);
+}
+
+.message-container{
+  opacity: 0;
+}
+
+@media only screen and (max-width : 540px) {
+  main{
+    visibility: hidden;
+  }
+  
+  .message-container{
+    opacity: 1 !important;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    .message{
+      color: white;
+      font-weight: 100;
+      font-size: 3em;
+      width: 100%;
+      white-space: nowrap;
+      font-family: 'Satisfy', cursive;
+    }
+  }
+}
+
+</style>
+<main>
+  <div class="love-container">
+    <h1 class="love">I Love You</h1>
+  </div>
+  <h1 class="heading invisible">Happy Valentine's Day Jo Jo!<br>Love Esten</h1>
+
+  <div class="question">
+    <h1>Who are you?</h1>
+    <input id="nickname" type="text" placeholder="Hint: Try a nickname.." >
+    <input id="unlock-button" type="button" value="Unlock!">
+  </div>
+  
+  <div class="heart-container" style="display:none">
+    <svg id="heart-svg" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+      <g id="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+        <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+      </g>
+    </svg>
+  </div>
+
+  <svg id="little-heart1" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart2" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart3" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart4" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart5" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart6" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart7" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart8" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart9" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+
+  <svg id="little-heart10" version="1.0" xmlns="http://www.w3.org/2000/svg" width="507.000000pt" height="463.000000pt" viewBox="0 0 507.000000 463.000000" preserveAspectRatio="xMidYMid meet">
+    <g class="heart" transform="translate(0.000000,463.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+      <path d="M1235 4480 c-367 -66 -685 -298 -864 -630 -49 -92 -94 -225 -117
+-345 -23 -125 -15 -416 16 -560 61 -289 194 -550 408 -805 110 -131 386 -399
+637 -620 583 -511 884 -818 1125 -1147 41 -56 77 -102 80 -103 3 0 14 14 24
+30 30 52 165 230 264 350 143 172 561 585 867 855 297 263 613 573 719 705
+197 247 320 495 377 758 26 125 37 390 20 499 -61 384 -284 702 -622 887 -284
+155 -683 182 -984 66 -100 -39 -207 -96 -280 -150 -140 -103 -276 -259 -346
+-395 -19 -36 -36 -65 -39 -65 -3 0 -22 31 -42 69 -151 279 -427 494 -745 578
+-84 22 -123 26 -273 29 -96 1 -197 -1 -225 -6z" />
+    </g>
+  </svg>
+</main>
+
+<div class="message-container">
+  <h1 class="message">Please use a larger screen.</h1>
+</div>
+var $body = $('body');
+var $heart = $('#heart-svg');
+var $littleHeart1 = $("#little-heart1");
+var $littleHeart2 = $("#little-heart2");
+var $littleHeart3 = $("#little-heart3");
+var $littleHeart4 = $("#little-heart4");
+var $littleHeart5 = $("#little-heart5");
+var $littleHeart6 = $("#little-heart6");
+var $littleHeart7 = $("#little-heart7");
+var $littleHeart8 = $("#little-heart8");
+var $littleHeart9 = $("#little-heart9");
+var $littleHeart10 = $("#little-heart10");
+
+var $heartArray = [$littleHeart1,$littleHeart2,$littleHeart3,$littleHeart4,$littleHeart5,$littleHeart6,$littleHeart7,$littleHeart8,$littleHeart9,$littleHeart10,];
+
+var $headingText = new SplitText(".heading", {type:"chars"});
+var $love = $('.love');
+var $loveContainer = $(".love-container");
+var $heading = $(".heading");
+
+TweenMax.to($heart, 1, {autoAlpha: 1});
+
+heartBeat($heart, 0.15, 0.25, 1);
+
+$heart.on('click', function(){
+    if(!$body.hasClass('is-animating')){
+      var littleHeartTimeline = new TimelineMax();
+      littleHeartTimeline
+        .set($body, {className:'+=is-animating'});
+        littleHeart($littleHeart1, 5, 0);
+        littleHeart($littleHeart2, 4, 3);
+        littleHeart($littleHeart3, 4, 1);
+        littleHeart($littleHeart4, 4, 2); 
+        littleHeart($littleHeart5, 3, 0.5);  
+        littleHeart($littleHeart6, 3, 1.5);  
+        littleHeart($littleHeart7, 4, 1);  
+        littleHeart($littleHeart8, 7, 0.25);  
+        littleHeart($littleHeart9, 5, 0.75);  
+        littleHeart($littleHeart10, 4, 2);  
+
+      littleHeartTimeline
+        .to($loveContainer, 1, {autoAlpha: 1})
+        .fromTo($love, 1, {autoAlpha: 1}, {autoAlpha: 0}, '+=1')
+        .set($heading, {className:'-=invisible'}, '-=1')
+        .staggerFromTo($headingText.chars, 1, {autoAlpha:0}, {autoAlpha: 1, rotationY: 0}, '0.1', '-=1')
+        .staggerFromTo($headingText.chars, 0.5, {autoAlpha:1, rotationY: 0}, {autoAlpha: 0, }, '0.1', "=+1")
+        .set($heading, {className:'+=invisible'})
+        .set($loveContainer, {autoAlpha: 0})
+        .set($heartArray, {css:{top: '100%'}})
+        .set($body, {className:'-=is-animating'});
+    }
+});
+
+function littleHeart(variable, second1, time){
+  var littleHeartTimeline = new TimelineMax();
+  littleHeartTimeline
+    .to(variable, second1, {css:{top:'-40%'}, ease:Linear.easeNone}, time)
+    .fromTo(variable, 2, {autoAlpha: 0}, {autoAlpha: 1}, time);
+}
+
+function heartBeat(variable, time1, time2, time3){
+  var heartTimeline = new TimelineMax({repeat: -1});
+  heartTimeline
+  .to(variable, time1, {scale: 1.5})
+  .to(variable, time2, {scale: 1})
+  .to(variable, time1, {scale: 1.5})
+  .to(variable, time3, {scale: 1});
+}
+
+$('#unlock-button').click(function(){
+  var val = $('#nickname').val();
+  var valLower = val.toLowerCase();
+
+  if (valLower === 'bug' || valLower === 'josie pie' || valLower === 'josiepie' || valLower === 'jojo' || valLower === 'jo jo') {
+    $('.question').html('<h1>Perfect Fit!</h1>');
+    setTimeout(function() {
+      $('.question').fadeOut();
+      $('.heart-container').fadeIn();
+    }, 1000);
+  } else {
+    $('#nickname').val('').attr('placeholder', "That's not what I call ya..");
+  }
+});
+</body>
+</html>
